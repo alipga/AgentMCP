@@ -29,6 +29,19 @@ services:
     volumes:
       - ./server:/app
     restart: unless-stopped
+  
+  mcp-server:
+    build:
+      context: ./mcp
+    container_name: mcp-server
+    ports:
+      - "8500:8000"
+    volumes:
+      - ./mcp:/app
+    depends_on:
+      - fastapi-backend
+    restart: unless-stopped
+
 
 
 volumes:

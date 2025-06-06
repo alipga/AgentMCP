@@ -13,8 +13,13 @@ done
 echo "Ollama server is ready. Installing models..."
 
 # Install DeepSeek model
-echo "Installing DeepSeek R1 1.5B..."
-ollama pull deepseek-r1:1.5b &
+# NOTE: deepseek does not support tools
+# echo "Installing DeepSeek R1 1.5B..."
+# ollama pull deepseek-r1:1.5b &
+
+# Install Llama 3 models
+echo "Installing Llama 3 models..."
+ollama pull llama3.1:8b &
 
 # Wait for all background downloads to complete
 wait
