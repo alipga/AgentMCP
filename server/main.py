@@ -24,13 +24,13 @@ class ProductUpdate(BaseModel):
     serial_number: Optional[str] = None
     manufacturing_date: Optional[date] = None
 
-@app.post("/products/", response_model=Product)
+@app.post("/products", response_model=Product)
 def add_product(product: ProductCreate):
     new_product = Product(id=uuid4(), **product.dict())
     products_db[str(new_product.id)] = new_product
     return new_product
 
-@app.get("/products/", response_model=List[Product])
+@app.get("/products", response_model=List[Product])
 def list_products():
     return list(products_db.values())
 
