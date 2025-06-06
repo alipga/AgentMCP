@@ -19,6 +19,17 @@ services:
       - open-webui:/app/backend/data
     extra_hosts:
       - "host.docker.internal:host-gateway"
+  
+  fastapi-backend:
+    build:
+      context: ./server
+    container_name: fastapi-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    restart: unless-stopped
+
 
 volumes:
   ollama_data:
